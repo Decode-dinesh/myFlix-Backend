@@ -21,6 +21,10 @@ mongoose.connect(process.env.MONGODB_URI, () => {
     console.log("Connected Successfully to Mongodb")
 });
 
+app.get('/', (req, res) => {
+    res.send("GET Request Called")
+});
+
 app.use("/",SigninRoute);
 app.use("/",SignupRoute);
 app.use("/",signWithIDRoute);
