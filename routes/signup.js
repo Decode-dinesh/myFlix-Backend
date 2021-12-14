@@ -16,6 +16,7 @@ router.post("/signup", async (req,res) => {
     }else{
         res.status(500).json({success:false});
     }
+
 });
 
 module.exports = router;
