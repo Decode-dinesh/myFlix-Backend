@@ -12,8 +12,8 @@ const removeWatchlistRoute = require('./routes/remoeWatchlist');
 
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 dotenv.config();
 
