@@ -2,13 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const SigninRoute = require('./routes/signin');
-const SignupRoute = require('./routes/signup');
-const signWithIDRoute = require('./routes/signinWithID');
-const getWatchlistRoute = require('./routes/getWatchlist');
-const addWatchlistRoute = require('./routes/addWatchlist');
-const checkWatchlistRoute = require('./routes/checkWatchlist');
-const removeWatchlistRoute = require('./routes/remoeWatchlist');
+const routes = require("./routes");
+
 
 const app = express();
 
@@ -21,14 +16,14 @@ mongoose.connect(process.env.MONGODB_URI, () => {
     console.log("Connected Successfully to Mongodb")
 });
 
+app.use(routes.signin);
+app.use(routes.signup);
+app.use(routes.signinWithID);
+app.use(routes.getWatchlist);
+app.use(routes.addWatchlist);
+app.use(routes.checkWatchlist);
+app.use(routes.removeWatchlist);
 
-app.use("/",SigninRoute);
-app.use("/",SignupRoute);
-app.use("/",signWithIDRoute);
-app.use("/",getWatchlistRoute);
-app.use("/",addWatchlistRoute);
-app.use("/",checkWatchlistRoute);
-app.use("/",removeWatchlistRoute);
 
 
 const port = process.env.PORT;
